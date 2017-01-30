@@ -1,0 +1,15 @@
+{
+  "name": "user",
+  "type": "groovy",
+  "content": "
+  import groovy.json.JsonSlurper \n
+  import groovy.json.JsonBuilder \n
+
+  def jsonSlurper = new JsonSlurper() \n
+  def object = jsonSlurper.parseText(args) \n
+
+  assert object instanceof Map \n
+
+  security.addUser(object.id, object.firstName, object.lastName, object.email, true, object.password, ['nx-anonymous']) \n
+  "
+}
