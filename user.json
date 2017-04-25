@@ -4,12 +4,16 @@
   "content": "
   import groovy.json.JsonSlurper \n
   import groovy.json.JsonBuilder \n
-
   def jsonSlurper = new JsonSlurper() \n
   def object = jsonSlurper.parseText(args) \n
-
   assert object instanceof Map \n
-
+  assert security != null \n
+  assert object != null \n
+  assert object.id != null \n
+  assert object.firstName != null \n
+  assert object.lastName != null \n
+  assert object.password != null \n
+  assert object.email != null \n
   security.addUser(object.id, object.firstName, object.lastName, object.email, true, object.password, ['nx-anonymous']) \n
   "
 }
